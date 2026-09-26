@@ -1,0 +1,12 @@
+{
+  "name": "kala",
+  "owner": { "name": "Kala Kuo" },
+  "metadata": { "description": "Kala's Claude Code plugins (forks / localizations)" },
+  "plugins": [
+    {
+      "name": "feature-ideation",
+      "source": "./plugins/feature-ideation",
+      "description": "feature-ideation 繁體中文版（fork 自 koshian-plugins）。發想功能點子存進 vault，依效益・難度・限制打標籤並可視化優先度。"
+    }
+  ]
+}

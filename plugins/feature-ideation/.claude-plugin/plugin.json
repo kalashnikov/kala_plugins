@@ -1,0 +1,8 @@
+{
+  "name": "feature-ideation",
+  "version": "0.1.4-zhtw.2",
+  "description": "繁體中文版 feature-ideation：發想功能點子存進 vault，依效益・難度・限制打標籤並可視化優先度，含深入研究、狀態確認、歸檔。",
+  "author": { "name": "koshian (original), Kala Kuo (zh-TW fork)" },
+  "repository": "https://github.com/alphabet-h/koshian-plugins",
+  "keywords": ["ideation", "brainstorming", "feature-vault", "prioritization", "backlog", "zh-TW"]
+}
