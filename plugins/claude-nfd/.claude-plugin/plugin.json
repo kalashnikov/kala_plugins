@@ -1,0 +1,8 @@
+{
+  "name": "claude-nfd",
+  "version": "0.1.1-zhtw.1",
+  "description": "繁體中文版 claude-nfd：Nurture-First Development 知識結晶化循環。從 session 紀錄萃取做事方式的模式，比對既有規則找出已存在、矛盾與過時的描述。",
+  "author": { "name": "koshian (original), Kala Kuo (zh-TW fork)" },
+  "repository": "https://github.com/alphabet-h/koshian-plugins",
+  "keywords": ["nfd", "knowledge-crystallization", "nurture-first-development", "workflow", "zh-TW"]
+}

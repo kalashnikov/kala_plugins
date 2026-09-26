@@ -7,6 +7,11 @@
       "name": "feature-ideation",
       "source": "./plugins/feature-ideation",
       "description": "feature-ideation 繁體中文版（fork 自 koshian-plugins）。發想功能點子存進 vault，依效益・難度・限制打標籤並可視化優先度。"
+    },
+    {
+      "name": "claude-nfd",
+      "source": "./plugins/claude-nfd",
+      "description": "claude-nfd 繁體中文版（fork 自 koshian-plugins）。從 session 紀錄萃取做事方式的模式，比對既有規則找出矛盾、過時與新發現；session 濃縮並遮罩 secret。"
     }
   ]
 }
