@@ -12,6 +12,11 @@
       "name": "claude-nfd",
       "source": "./plugins/claude-nfd",
       "description": "claude-nfd 繁體中文版（fork 自 koshian-plugins）。從 session 紀錄萃取做事方式的模式，比對既有規則找出矛盾、過時與新發現；session 濃縮並遮罩 secret。"
+    },
+    {
+      "name": "ste-html",
+      "source": "./plugins/ste-html",
+      "description": "複雜回答輸出成一頁單檔 HTML，文字遵守 ASD-STE100 簡化技術英文規則（融合 asd-ste100-skill 的規則與 linter、answer-me-with-html 的 HTML 輸出概念）。SKILL 英文；純 Python 標準函式庫，無網路呼叫。"
     }
   ]
 }

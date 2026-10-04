@@ -10,6 +10,7 @@ Kala 的 Claude Code plugin marketplace。
 /plugin marketplace add kalashnikov/kala_plugins
 /plugin install feature-ideation@kala
 /plugin install claude-nfd@kala
+/plugin install ste-html@kala
 ```
 
 或用 CLI：
@@ -18,6 +19,7 @@ Kala 的 Claude Code plugin marketplace。
 claude plugin marketplace add kalashnikov/kala_plugins
 claude plugin install feature-ideation@kala
 claude plugin install claude-nfd@kala
+claude plugin install ste-html@kala
 ```
 
 ## Plugins
@@ -26,6 +28,7 @@ claude plugin install claude-nfd@kala
 |---|---|
 | [feature-ideation](plugins/feature-ideation) | 繁體中文版 feature-ideation，fork 自 [koshian-plugins](https://github.com/alphabet-h/koshian-plugins)（MIT）。解決「點子一直累積，但沒人回頭看」：點子存進專案的 `docs/feature-ideas.md`，依效益・難度・限制打標籤，`discuss` 決定做不做，`check` 用腳本實際計數找出被放著爛掉的項目。詳見 [plugin README](plugins/feature-ideation/README.md)。 |
 | [claude-nfd](plugins/claude-nfd) | 繁體中文版 claude-nfd，fork 自 [koshian-plugins](https://github.com/alphabet-h/koshian-plugins)（MIT）。`/crystallize` 從 session 紀錄萃取「怎麼做事」的模式，逐條比對專案既有規則，找出**規則與實際行為的落差**、過時描述與新慣例；只產報告，由人挑選後整合。session 紀錄先濃縮並遮罩 secret，跳過 headless 雜訊。跟原版指令同名，只能啟用其中一個。詳見 [plugin README](plugins/claude-nfd/README.md)。 |
+| [ste-html](plugins/ste-html) | 複雜回答輸出成一頁單檔 HTML（面板 + 表格、流程、時序、樹狀、時間軸元件，深淺色、RWD），文字遵守 ASD-STE100 簡化技術英文：短句、主動語態、一詞一義、保留語氣詞。規則與 linter 取自 [asd-ste100-skill](https://github.com/danyuchn/asd-ste100-skill)（MIT），一頁 HTML 的概念取自 [answer-me-with-html](https://github.com/QingYunA/answer-me-with-html)，但沒有用它的程式碼。純 Python 標準函式庫，沒有網路呼叫。詳見 [plugin README](plugins/ste-html/README.md)。 |
 
 ## 評估過但沒收錄
 

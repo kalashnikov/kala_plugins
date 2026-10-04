@@ -1,0 +1,7 @@
+{
+  "name": "ste-html",
+  "version": "0.1.0",
+  "description": "Answer complex questions as a one-page, single-file HTML explainer whose prose follows ASD-STE100 (Simplified Technical English). Stdlib Python build + lint, no network.",
+  "author": { "name": "Kala Kuo" },
+  "keywords": ["html", "explainer", "ste100", "controlled-language", "diagram", "zh-TW"]
+}
