@@ -23,6 +23,8 @@ import subprocess
 import sys
 from html.parser import HTMLParser
 
+sys.dont_write_bytecode = True  # keep __pycache__ out of the plugin directory
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 TEMPLATE = os.path.join(HERE, "..", "assets", "template.html")
 OUT_DIR = os.path.expanduser("~/.ste-html/pages")
