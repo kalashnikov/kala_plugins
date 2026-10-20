@@ -1,0 +1,9 @@
+{
+  "name": "fi-build",
+  "version": "0.1.0",
+  "description": "feature-ideation 的實作階段：plan（摸清程式碼→決定資料形狀與邊界→必要時用丟棄式腳本實測→寫 plan）與 verify（在真實對象上驗證、數字把關、影響範圍證明）。改寫自 pstack 的 how／architect／prototype／prove-it-works／blast-radius／benchmark-checklist。",
+  "author": { "name": "Kala Kuo（改寫自 poteto／Lauren Tan 的 pstack）" },
+  "repository": "https://github.com/cursor/plugins/tree/main/pstack",
+  "license": "MIT",
+  "keywords": ["feature-ideation", "plan", "verify", "architecture", "zh-TW"]
+}

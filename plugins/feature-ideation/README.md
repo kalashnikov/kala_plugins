@@ -36,7 +36,7 @@ discuss 問的是「值不值得做、在什麼條件下做」，是進入規格
 | 問得多深 | 淺，2–3 題 | 深，一題一題追到底 | 深，一次一題，並提出 2–3 種做法 |
 | 產出 | 清單一行或詳細檔 | 對計畫的共同理解 | 設計規格 → writing-plans |
 
-完整流程：feature-ideation（發想、排序）→ discuss（決定做不做）→ brainstorming 或 grill-me（細化規格）→ writing-plans → 實作 → archive（附 PR 和心得結案）。
+完整流程：feature-ideation（發想、排序）→ discuss（決定做不做）→ `/fi-build:plan`（摸清程式碼、決定形狀、寫 plan）→ 實作 → `/fi-build:verify`（真實對象驗證）→ archive（附 commit 和心得結案）。fi-build 是同一個 marketplace 的另一個 plugin；沒裝的話照舊用 brainstorming／grill-me＋writing-plans。
 
 ## 何時不用 / 注意
 
