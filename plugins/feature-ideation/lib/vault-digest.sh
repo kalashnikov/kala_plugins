@@ -196,15 +196,25 @@ esac
 is_conforming_name() { printf '%s' "$1" | grep -qE "$NAME_RE_ERE"; }
 
 # ------------------------------------------------------------ index 解析 ----
+# 紀錄表超過 60 行時會按年切到 <detail>/archive-YYYY.md。這些檔只讀紀錄表區段，
+# 讓件數、DANGLING、下一個 ID 都把已歸檔的 ID 算進去。
+ARCH_FILES=()
+if [ -n "$DETAIL" ]; then
+  for f in "$DETAIL"/archive-[0-9][0-9][0-9][0-9]*.md; do
+    [ -f "$f" ] && ARCH_FILES+=("$f")
+  done
+fi
 # 出力はタグ付きの中間レコード。bash 側で組み立てる。
 IDX="$(awk -v today="$TODAY" -v staled="$STALE_DAYS" \
         -v idre="$ID_RE_AWK" -v linkre="$LINK_RE_AWK" -v idstyle="$ID_STYLE" "$AWKLIB"'
 BEGIN{ SEP="^[ \t]*\\|[ \t:|-]+\\|?[ \t]*$"; tn=d2n(today); ttype="none" }
 { sub(/\r$/,"") }
-NR==1 && /^---[ \t]*$/ { fm=1; next }
+FNR==1 { arch=(NR!=FNR); fence=0; fm=0; pending=""; intable=0; ttype="none"; section=""; awaiting_meta=0
+         afile=FILENAME; sub(/.*\//,"",afile) }
+FNR==1 && /^---[ \t]*$/ { fm=1; next }
 fm && /^---[ \t]*$/    { fm=0; next }
 fm {
-  if($0 ~ /^last_sweep:/){ v=maxdate($0); if(v!="") printf "K\tlast_sweep\t%s\n", v }
+  if(!arch && $0 ~ /^last_sweep:/){ v=maxdate($0); if(v!="") printf "K\tlast_sweep\t%s\n", v }
   next }
 /^```/ { fence=!fence; next }
 fence  { next }
@@ -212,6 +222,10 @@ fence  { next }
 /^## / {
   h=clean(substr($0,4))
   pending=""; intable=0; ttype="none"; awaiting_meta=0
+  if(arch){
+    # archive 檔只認紀錄表；其他標題不當類別
+    section=(h ~ /^実装済み台帳|^不採用の記録|^已實作紀錄|^不採用紀錄/) ? h : "archive-other"
+    next }
   if(h ~ /^凡例|^既存 doc|^更新ルール|^ペンディング|^変更履歴|^再評価キュー|^優先度ピック|^実装済み台帳|^不採用の記録|^圖例|^與既有文件|^更新規則|^待整理|^變更紀錄|^重新評估佇列|^優先挑選|^已實作紀錄|^不採用紀錄/){
     section=h
     if(h ~ /^優先度ピック|^優先挑選/){ d=maxdate(h); if(d!="") printf "K\tpick_date\t%s\n", d }
@@ -272,7 +286,8 @@ function row(line,  n,p,last,nf,id,st,nm,im,df,cs,nt,due,ov,proof,lesson,rsn,rev
   if(line ~ SEP || ttype=="other" || ttype=="none") return
   n=split(line,p,"|"); last=(line ~ /\|[ \t]*$/)? n-1 : n; nf=last-1
   if(nf!=hdrn){
-    printf "WARN\t第 %d 行: 欄數 %d 與表頭的 %d 不符\n", FNR, nf, hdrn
+    if(arch) printf "WARN\t%s 第 %d 行: 欄數 %d 與表頭的 %d 不符\n", afile, FNR, nf, hdrn
+    else     printf "WARN\t第 %d 行: 欄數 %d 與表頭的 %d 不符\n", FNR, nf, hdrn
     if(nf<2) return }
 
   if(ttype=="queue"){
@@ -335,7 +350,7 @@ END{
   if(legacy>0)
     printf "K\tlegacy_rows\t%d\n", legacy
 }
-' "$VAULT" 2>/dev/null)"
+' "$VAULT" "${ARCH_FILES[@]}" 2>/dev/null)"
 
 pick() { printf '%s\n' "$IDX" | awk -F'\t' -v OFS='\t' -v t="$1" '$1==t{ $1=""; sub(/^\t/,""); print }'; }
 kv()   { printf '%s\n' "$IDX" | awk -F'\t' -v k="$2" '$1=="K" && $2==k{print $3; exit}'; }

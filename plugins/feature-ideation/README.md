@@ -58,6 +58,7 @@ discuss 問的是「值不值得做、在什麼條件下做」，是進入規格
 - `lib/vault-digest.sh` 同時認得繁中和日文標題，日文 vault 仍可用；輸出訊息改繁中。用 upstream 10 組測試資料比對，計數與原版完全相同。
 - 修正 macOS bug：`sort | uniq` 在 UTF-8 locale 下把「中、大、小」視為同一字，效益和類別計數全部擠在一起。修法是 `LC_COLLATE=C`。
 - 修正 macOS bug：內建 bash 3.2 在 `$( )` 裡解析 `case pattern)` 時，把 `)` 當成替換結尾，DETAIL DIR 區段會印出原始碼片段，缺檔偵測從未生效。修法是改寫成 `(pattern)`。
+- `vault-digest.sh` 也讀詳細檔目錄下的 `archive-YYYY.md`（只認紀錄表區段）：紀錄表按年切檔後，件數、DANGLING、挑選觸發條件不會把已歸檔的 ID 當成不存在。沒有 archive 檔時輸出與先前逐位元組相同。
 - 範本規則編號勘誤：「見更新規則 8-10」改為規則 6。
 
 上面兩個 macOS bug upstream 也有，尚未回報。
